@@ -11,3 +11,11 @@ AMQP (Advanced Message Queuing Protocol) is a standardized application-layer pro
 b. What does it mean? guest:guest@localhost:5672 , what is the first guest, and what is the second guest, and what is localhost:5672 is for?
 The first "guest" represents the username, while the second "guest" is the corresponding password used for authentication. "localhost:5672" specifies the server address and port with "localhost" indicating the RabbitMQ server is hosted on the local machine, and "5672" being the default port used for AMQP communication.
 
+## Screenshot of Slow Subscriber
+
+According to the image below, the number of peak queue is ~130. This could happen because eEach message takes at least 1 second to process due to the thread::sleep(ten_millis) call. If messages are being published faster than once per second, they will naturally pile up in the queue because:
+
+- Publisher: Can send messages without waiting
+- Subscriber: Takes 1 second per message to process
+
+![Screenshot Slow Subscriber](ss-queue.png)
