@@ -19,3 +19,10 @@ According to the image below, the number of peak queue is ~130. This could happe
 - Subscriber: Takes 1 second per message to process
 
 ![Screenshot Slow Subscriber](ss-queue.png)
+
+## Screenshot of Running Three Subscribers
+
+Here i running three subscribers with the same amount of message i sent from publishers. The chart show that we successfully reduced the number of queue. This could happen because each subscriber can process messages in parallel, effectively distributing the workload. Each subscriber independently processes messages from the same queue, allowing for concurrent message handling, so instead of 1 message per second, we doing 3 messages per second.
+
+![Screenshot Terminal](ss-terminal.png)
+![Screenshot Monitoring](ss-monitoring.png)
